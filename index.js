@@ -32,5 +32,4 @@ app.get('/list', function (req, res) {
   })
 })
 
-app.listen(3000)
-console.log('Express app started on port ' + port);
+app.listen(port)
