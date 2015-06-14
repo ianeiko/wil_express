@@ -69,6 +69,5 @@ exports.ask = function(req, res) {
     var sms_id = get_sms_id(req);
     send_message(sms_id, '+17734502888');
     //handle_sms(sms_id);
-    res.send('sucka');
-    //res.end('ASK');
+    res.end('ASK');
 }
