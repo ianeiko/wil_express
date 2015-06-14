@@ -214,7 +214,10 @@ article .nearby h1 {
     font-size: 120%;
 }
 
-
+article img {
+    max-width: 450px;
+    margin-bottom: 20px;
+}
 
 
 
