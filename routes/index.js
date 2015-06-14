@@ -25,45 +25,42 @@ var handle_sms = function(sms_id, query) {
   client().messages(sms_id).get(function(err, message) {
     if(!msg || typeof(message) == 'undefined'){
       send_message('No message found for the ID [' + sms_id + ']', '+17734502888');
-      console.log('oopsie cakes, no message was found');
       return;
     }
+    analyze_message(message.body, message.from);
 
-    send_message('Here is some sweet body text...... [' + message.body + ']', '+17734502888');
-
-    var msg = message.body;
-    if(is_greeting(msg)){
-      send_message('Hey! We’re here to help you figure out when to go. What do you wanna know?', message.from)
-    } else {
-      respondToQuestion(msg)
-    }
   }, function (err, message) {
     send_message('there was an error in processing the sms message [' + sms_id + '] - ' + err.message);
   });
-}
+};
+
+var is_greeting = function(msg) {
+  msg && msg.split(" ").length < 4
+};
+
+var analyze_message = function(msg, destination) {
+  if(is_greeting(msg)){
+    send_message('Hey! We’re here to help you figure out when to go. What do you wanna know?', destination);
+  } else {
+    respondToQuestion(msg, destination);
+  }
+};
 
 var handle_sms_query = function(query) {
-  var sms_id = query.SmsSid;
-  send_message('I got the motherluvin SMS ID, hooker! [' + sms_id + ']', '+17734502888');
-
-  var msg_to = query.To;
+  //var sms_id = query.SmsSid;
   var msg_from = query.From;
   var msg_body = query.Body;
-  send_message('Here is some sweet body text...... [' + msg_body + ']', msg_from);
-}
+  if(msg_from && msg_body) analyze_message(msg_body, msg_from);
+};
 
 var fuzzy_match = function (str, pattern){
   pattern = pattern.split("").reduce(function(a,b){ return a+'[^'+b+']*'+b; });
   return (new RegExp(pattern)).test(str);
 };
 
-var is_greeting = function(msg) {
-  msg && msg.split(" ").length < 4
-}
-
-var respondToQuestion = function(question) {
-
-}
+var respondToQuestion = function(question, destination) {
+  send_message("Sorry, I'm not smart to help you with that question yet.", destination);
+};
 
 exports.ask = function(req, res) {
   handle_sms_query(req.query);
