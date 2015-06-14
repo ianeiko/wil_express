@@ -6,7 +6,7 @@ mongoose.connect("mongodb://wil_test:nonuvlutonm@c1104.candidate.11.mongolayer.c
 
 var app = express()
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
 
 app.get('/', function (req, res) {
   return res.send('Hey, yo!')
