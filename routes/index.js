@@ -35,7 +35,7 @@ var handle_sms = function(sms_id, query) {
 };
 
 var is_greeting = function(msg) {
-  msg && msg.split(" ").length < 4
+  return (msg && msg.split(" ").length < 4);
 };
 
 var analyze_message = function(msg, destination) {
@@ -59,7 +59,7 @@ var fuzzy_match = function (str, pattern){
 };
 
 var respondToQuestion = function(question, destination) {
-  send_message("Sorry, I'm not smart to help you with that question yet.", destination);
+  send_message("Sorry, I'm not smart enough to help you with that question yet.", destination);
 };
 
 exports.ask = function(req, res) {
