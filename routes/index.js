@@ -22,20 +22,24 @@ var send_message = function (msg, msg_to) {
 };
 
 var get_sms_id = function(req) {
-  console.log("boooooooo   " + req.url);
-  var query = JSON.stringify(req.query);
-  console.log("i got a query string bitchesssssss..... " + query);
-  return query;
+  return req.query.SmsSid;
 }
 
 var handle_sms = function(sms_id) {
   client().messages(sms_id).get(function(err, message) {
+    if(!msg || typeof(message) == 'undefined'){
+      console.log('oopsie cakes, no message was found');
+      return;
+    }
+
     var msg = message.body;
     if(is_greeting(msg)){
       send_message('Hey! We’re here to help you figure out when to go. What do you wanna know?', message.to)
     } else {
       respondToQuestion(msg)
     }
+  }, function (err, message) {
+    send_message('there was an error in processing the sms message [' + sms_id + '] - ' + err.message);
   });
 }
 
@@ -48,26 +52,13 @@ var is_greeting = function(msg) {
   msg && msg.split(" ").length < 4
 }
 
-var messages = function(res) {
-  client().messages.list(function (err, data) {
-    response_msg = data.messages.map(function(elem){
-      if(elem){
-         return elem.body;
-      } else {
-        return "";
-      }
-    }).join("\n");
-    res.send(response_msg);
-  });
-};
-
 var respondToQuestion = function(question) {
 
 }
 
 exports.ask = function(req, res) {
   var sms_id = get_sms_id(req);
-  send_message(sms_id, '+17734502888');
-  //handle_sms(sms_id);
-  res.end('ASK');
+  send_message('I got the motherluvin SMS ID, hooker! [' + sms_id + ']', '+17734502888');
+  handle_sms(sms_id);
+  res.end('May the force be with you, my friend.');
 }
