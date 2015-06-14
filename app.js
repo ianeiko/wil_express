@@ -6,6 +6,8 @@ mongoose.connect("mongodb://wil_test:nonuvlutonm@c1104.candidate.11.mongolayer.c
 
 var app = express()
 
+app.use(express.static('public'))
+
 app.get('/', function (req, res) {
   return res.send('Hey, yo!')
 })
@@ -18,6 +20,7 @@ app.get('/list', function (req, res) {
     return res.json(documents)
   })
 })
+
 
 var port = process.env.PORT || 3000
 app.listen(port);
