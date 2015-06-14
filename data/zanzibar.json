@@ -2,6 +2,15 @@
   "title": "Zanzibar, Tanzania",
   "desc": "Zanzibar is a semi-autonomous archipelago off the coast of Tanzania consisting of Zanzibar Island, Pemba Island and many smaller islands.",
   "img": "/public/img/zanzibar.jpg",
+  "months": [{
+    "name": "July"
+    },{
+    "name": "August",
+    "selected": true
+    },{
+    "name": "September"
+    }
+  ],
   "month": 7,
   "tags": [{
     "name": "#kitesurfing",
@@ -10,8 +19,8 @@
     "name":"#diving",
     "check": true
   }],
-  "temp": "",
-  "rain": "",
+  "temp": "78",
+  "rain": "0",
   "wind": "18mph",
   "climate": "Zanzibar has tropical climate with rainiest months being August, September and October and driest months being December and January",
   "crowds": "",
