@@ -56,9 +56,9 @@ var handle_sms_query = function(query) {
 var respondToQuestion = function(question, destination) {
   if(question){
     if(question.indexOf("kite") > -1){
-      send_message("About 7 flight hrs away: Cabarete, Dominican Republic is great for kitesurfing in August. [http://whentogo.travel/page/cabarete]", destination);
-      send_message("About 9 flight hrs away: Jericoacoara, Brazil has on average good 15mph wind in July. [http://whentogo.travel/page/jericoacoara]", destination);
-      send_message("About 20 flight hrs away: Zanzibar, Tanzania has the best conditions for kitesurfing in summer months. [http://whentogo.travel/page/zanzibar]", destination);
+      send_message("About 7 flight hrs away: Cabarete, Dominican Republic is great for kitesurfing in August. [http://wil.herokuapp.com/page/cabarete]", destination);
+      send_message("About 9 flight hrs away: Jericoacoara, Brazil has on average good 15mph wind in July. [http://wil.herokuapp.com/page/jericoacoara]", destination);
+      send_message("About 20 flight hrs away: Zanzibar, Tanzania has the best conditions for kitesurfing in summer months. [http://wil.herokuapp.com/page/zanzibar]", destination);
       return;
     } else if(question.indexOf("Mexico") > -1){
       send_message("Tulum, Mexico has tropical climate. To skip the rainy season in summer, escape crowds in winter and save money - choose Oct/Nov. Don’t miss Day of the Dead on Oct 31.", destination);
