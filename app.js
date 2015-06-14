@@ -3,7 +3,7 @@ var routes = require('./routes')
 
 var app = express()
 
-app.use(express.static('public'))
+app.use('/pages', express.static('public'))
 
 app.get('/', function (req, res) {
   return res.send('Hey, yo!')
