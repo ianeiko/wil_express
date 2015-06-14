@@ -1,5 +1,6 @@
 var express = require('express')
 var routes = require('./routes')
+var sabre = require('./sabre')
 var swig = require('swig')
 
 var app = express()
@@ -21,7 +22,16 @@ app.get('/', function (req, res) {
 
 app.get('/page/:id', function (req, res) {
   var data = require('./data/' + req.params.id + '.json')
-  res.render('page', data);
+  var sabreCb = function(error, data) {
+    if (error) {
+      // console.log(error)
+    } else {
+      // console.log(JSON.parse(data))
+    }
+    // data.
+    res.render('page', data);
+  };
+  sabre(sabreCb)
 })
 
 app.get('/ask', routes.ask)

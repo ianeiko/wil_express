@@ -1,6 +1,9 @@
 {
   "title": "Jericoacoara, Brazil",
+  "country": "Brazil",
+  "region": "Latin America",
   "desc": "Jericoacoara is a small finishing village and mecca for kitesurfing and windsurfing.",
+  "month": 6,
   "tags": [{
     "name": "#kitesurfing",
     "check": true

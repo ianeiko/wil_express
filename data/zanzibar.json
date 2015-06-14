@@ -1,6 +1,9 @@
 {
   "title": "Zanzibar, Tanzania",
+  "country": "Tanzania",
+  "region": "",
   "desc": "Zanzibar is a semi-autonomous archipelago off the coast of Tanzania consisting of Zanzibar Island, Pemba Island and many smaller islands.",
+  "month": 7,
   "tags": [{
     "name": "#kitesurfing",
     "check": true

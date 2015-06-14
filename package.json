@@ -7,6 +7,7 @@
     "express": "^4.12.4",
     "lodash": "^3.9.3",
     "mongoose": "^4.0.5",
+    "sabre-dev-studio": "^1.0.1",
     "swig": "^1.4.2",
     "twilio": "^2.2.1"
   },
