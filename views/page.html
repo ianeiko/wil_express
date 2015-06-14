@@ -6,9 +6,9 @@
     <h1>{{ title }}</h1>
     <p>{{ desc }}</p>
     <div class="months">
-      <span>June</span>
-      <span class="selected">July</span>
-      <span>August</span>
+      {% for month in months %}
+        <span {% if month.selected %}class="selected"{% endif %}>{{ month.name }}</span>
+      {% endfor %}
     </div>
     <p class="tags">
       {% for tag in tags %}
@@ -22,8 +22,12 @@
     </div>
     <h2>Climate</h2>
     <p>{{ climate }}</p>
+    {% if crowds %}
     <h2>Crowds</h2>
-    <p>{{ crowds }}</p>
+    <p>
+      {% if season=='High' %} July is High Season, expect it to be crowded. {% endif %}
+      {{ crowds }}</p>
+    {% endif %}
     <h2>Nearby in July</h2>
     <hr />
     <div class="nearby">

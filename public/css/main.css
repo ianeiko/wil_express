@@ -215,7 +215,7 @@ article .nearby h1 {
 }
 
 article img {
-    max-width: 450px;
+    max-width: 100%;
     margin-bottom: 20px;
 }
 

@@ -4,6 +4,15 @@
   "desc": "Jericoacoara is a small finishing village and mecca for kitesurfing and windsurfing.",
   "img": "/public/img/jericoacoara.jpg",
   "month": 6,
+  "months": [{
+    "name": "June"
+    },{
+    "name": "July",
+    "selected": true
+    },{
+    "name": "August"
+    }
+  ],
   "tags": [{
     "name": "#kitesurfing",
     "check": true
@@ -23,7 +32,7 @@
   "rain": "0.07",
   "wind": "15",
   "climate": "Jericoacoara has tropical climate with rainy season in Jan-Jul and dry season in Jul-Dec",
-  "crowds": "July is High Season, expect it to be crowded. Additionally: avoid National holiday period between Dec-Feb with local tourists flocking to beach destinations.",
+  "crowds": "Additionally: avoid National holiday period between Dec-Feb with local tourists flocking to beach destinations.",
   "others": [{
     "title": "Cumbuco, Brazil",
     "desc": "Cumbuco is a relaxed beach village popular with kite and windsurfers",
