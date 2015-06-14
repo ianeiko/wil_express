@@ -22,16 +22,16 @@ app.get('/', function (req, res) {
 
 app.get('/page/:id', function (req, res) {
   var data = require('./data/' + req.params.id + '.json')
-  var sabreCb = function(error, data) {
+  var week = (data.month * 4) - 1
+  sabre(function(error, response) {
+    var seasonality = JSON.parse(response)
     if (error) {
-      // console.log(error)
+      console.log(error)
     } else {
-      // console.log(JSON.parse(data))
+      data.season = seasonality['Seasonality'][week]['SeasonalityIndicator']
     }
-    // data.
-    res.render('page', data);
-  };
-  sabre(sabreCb)
+    res.render('page', data)
+  })
 })
 
 app.get('/ask', routes.ask)
