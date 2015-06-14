@@ -21,44 +21,49 @@ var send_message = function (msg, msg_to) {
   });
 };
 
-var get_sms_id = function(req) {
-  return req.query.SmsSid;
-}
-
-var handle_sms = function(sms_id) {
+var handle_sms = function(sms_id, query) {
   client().messages(sms_id).get(function(err, message) {
     if(!msg || typeof(message) == 'undefined'){
-      console.log('oopsie cakes, no message was found');
+      send_message('No message found for the ID [' + sms_id + ']', '+17734502888');
       return;
     }
+    analyze_message(message.body, message.from);
 
-    var msg = message.body;
-    if(is_greeting(msg)){
-      send_message('Hey! We’re here to help you figure out when to go. What do you wanna know?', message.to)
-    } else {
-      respondToQuestion(msg)
-    }
   }, function (err, message) {
     send_message('there was an error in processing the sms message [' + sms_id + '] - ' + err.message);
   });
-}
+};
+
+var is_greeting = function(msg) {
+  return (msg && msg.split(" ").length < 4);
+};
+
+var analyze_message = function(msg, destination) {
+  if(is_greeting(msg)){
+    send_message('Hey! We’re here to help you figure out when to go. What do you wanna know?', destination);
+  } else {
+    respondToQuestion(msg, destination);
+  }
+};
+
+var handle_sms_query = function(query) {
+  //var sms_id = query.SmsSid;
+  var msg_from = query.From;
+  var msg_body = query.Body;
+  if(msg_from && msg_body) analyze_message(msg_body, msg_from);
+};
 
 var fuzzy_match = function (str, pattern){
   pattern = pattern.split("").reduce(function(a,b){ return a+'[^'+b+']*'+b; });
   return (new RegExp(pattern)).test(str);
 };
 
-var is_greeting = function(msg) {
-  msg && msg.split(" ").length < 4
-}
-
-var respondToQuestion = function(question) {
-
-}
+var respondToQuestion = function(question, destination) {
+  send_message("So sorry, I'm not smart enough to help you with that question yet.", destination);
+};
 
 exports.ask = function(req, res) {
-  var sms_id = get_sms_id(req);
-  send_message('I got the motherluvin SMS ID, hooker! [' + sms_id + ']', '+17734502888');
-  handle_sms(sms_id);
+  handle_sms_query(req.query);
+  //handle_sms(sms_id, req.query);
   res.end('May the force be with you, my friend.');
 }
