@@ -21,11 +21,7 @@ var send_message = function (msg, msg_to) {
   });
 };
 
-var get_sms_id = function(req) {
-  return req.query.SmsSid;
-}
-
-var handle_sms = function(sms_id) {
+var handle_sms = function(sms_id, query) {
   client().messages(sms_id).get(function(err, message) {
     if(!msg || typeof(message) == 'undefined'){
       send_message('No message found for the ID [' + sms_id + ']', '+17734502888');
@@ -46,6 +42,16 @@ var handle_sms = function(sms_id) {
   });
 }
 
+var handle_sms_query = function(query) {
+  var sms_id = query.SmsSid;
+  send_message('I got the motherluvin SMS ID, hooker! [' + sms_id + ']', '+17734502888');
+
+  var msg_to = query.To;
+  var msg_from = query.From;
+  var msg_body = query.Body;
+  send_message('Here is some sweet body text...... [' + msg_body + ']', msg_from);
+}
+
 var fuzzy_match = function (str, pattern){
   pattern = pattern.split("").reduce(function(a,b){ return a+'[^'+b+']*'+b; });
   return (new RegExp(pattern)).test(str);
@@ -60,8 +66,7 @@ var respondToQuestion = function(question) {
 }
 
 exports.ask = function(req, res) {
-  var sms_id = get_sms_id(req);
-  send_message('I got the motherluvin SMS ID, hooker! [' + sms_id + ']', '+17734502888');
-  handle_sms(sms_id);
+  handle_sms_query(req.query);
+  //handle_sms(sms_id, req.query);
   res.end('May the force be with you, my friend.');
 }
