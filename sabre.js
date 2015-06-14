@@ -5,6 +5,6 @@ var sabre_dev_studio = new SabreDevStudio({
   uri:           'https://api.test.sabre.com'
 });
 
-module.exports = function(callback){
+module.exports = function(airport, callback){
   sabre_dev_studio.get('/v1/historical/flights/GIG/seasonality', {}, callback);
 }
