@@ -53,12 +53,19 @@ var handle_sms_query = function(query) {
   if(msg_from && msg_body) analyze_message(msg_body, msg_from);
 };
 
-var fuzzy_match = function (str, pattern){
-  pattern = pattern.split("").reduce(function(a,b){ return a+'[^'+b+']*'+b; });
-  return (new RegExp(pattern)).test(str);
-};
-
 var respondToQuestion = function(question, destination) {
+  if(question){
+    if(question.indexOf("kite") > -1){
+      send_message("About 7 flight hrs away: Cabarete, Dominican Republic is great for kitesurfing in August. [URL_GOES_HERE]", destination);
+      send_message("About 9 flight hrs away: Jericoacoara, Brazil has on average good 15mph wind in July. [URL_GOES_HERE]", destination);
+      send_message("About 20 flight hrs away: Zanzibar, Tanzania has the best conditions for kitesurfing in summer months. [URL_GOES_HERE]", destination);
+      return;
+    } else if(question.indexOf("Mexico") > -1){
+      send_message("Tulum, Mexico has tropical climate. To skip the rainy season in summer, escape crowds in winter and save money - choose Oct/Nov. Don’t miss Day of the Dead on Oct 31.", destination);
+      return;
+    }
+  }
+
   send_message("So sorry, I'm not smart enough to help you with that question yet.", destination);
 };
 
