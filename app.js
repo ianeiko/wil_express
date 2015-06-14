@@ -1,12 +1,27 @@
 var express = require('express')
 var routes = require('./routes')
+var swig = require('swig')
 
 var app = express()
 
-app.use('/pages', express.static('public'))
+// set views
+swig.setDefaults({
+  cache: false
+})
+app.engine('html', swig.renderFile)
+app.set('views', 'views')
+app.set('view engine', 'html')
+
+// routes
+app.use('/public', express.static('public'))
 
 app.get('/', function (req, res) {
-  return res.send('Hey, yo!')
+  res.render('blank');
+})
+
+app.get('/page/:id', function (req, res) {
+  var data = require('./data/' + req.params.id + '.json')
+  res.render('page', data);
 })
 
 app.get('/ask', routes.ask)

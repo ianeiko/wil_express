@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <article>
+    <h1>{{ title }}</h1>
+    <p>{{ desc }}</p>
+    <div class="months">
+      <span>June</span>
+      <span class="selected">July</span>
+      <span>August</span>
+    </div>
+    <p class="tags">
+      {% for tag in tags %}
+        <span>{{ tag.name }} {% if tag.check %} <b>&check;</b>{% endif %}</span>
+      {% endfor %}
+    </p>
+    <div class="badges">
+      <span class="badge">{{ temp }}&deg;C</span>
+      <span class="badge">{{ rain }}</span>
+      <span class="badge">{{ wind }}</span>
+    </div>
+    <h2>Climate</h2>
+    <p>{{ climate }}</p>
+    <h2>Crowds</h2>
+    <p>{{ crowds }}</p>
+    <h2>Nearby in July</h2>
+    <hr />
+    <div class="nearby">
+      {% for other in others %}
+        <h1>{{ other.title }}</h1>
+        <p>{{ other.desc }}</p>
+        <p class="tags">
+          {% for othertag in other.tags %}
+            <span>{{ othertag.name }} {% if othertag.check %} <b>&check;</b>{% endif %}</span>
+          {% endfor %}
+        </p>
+      {% endfor %}
+    </div>
+  </article>
+{% endblock %}

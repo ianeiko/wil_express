@@ -1,0 +1,55 @@
+{
+  "title": "Cabarete, Brazil",
+  "desc": "Jericoacoara is a small finishing village and mecca for kitesurfing and windsurfing.",
+  "tags": [{
+    "name": "#kitesurfing",
+    "check": true
+  },{
+    "name":"#windsurfing",
+    "check": true
+  },{
+    "name":"#kayaking",
+    "check": true
+  },{
+    "name":"#sandboarding",
+    "check": true
+  },{
+   "name":"#surfing - see Dec-Apr"
+  }],
+  "temp": "26",
+  "rain": "",
+  "wind": "",
+  "climate": "Jericoacoara has tropical climate with rainy season in Jan-Jul and dry season in Jul-Dec",
+  "crowds": "July is High Season, expect it to be crowded. Additional Info: Avoid National holiday period between Dec-Feb with local tourists flocking to beach destinations.",
+  "others": [{
+    "title": "Cumbuco, Brazil",
+    "desc": "Cumbuco is a relaxed beach village popular with kite and windsurfers",
+    "tags": [{
+      "name": "#kitesurfing",
+      "check": true
+    },{
+      "name":"#windsurfing",
+      "check": true
+    }]
+  },{
+   "title": "Lencois Maranhenses National Park, Brazil",
+    "desc": "Sand Dunes in the park are a national wonder not to miss, especially after rainy season when water from the rain forms surreal lagoons between the dunes",
+    "tags": [{
+      "name": "#buggy rides",
+      "check": true
+    },{
+      "name": "#natural wonder",
+      "check": true
+    },{
+      "name":"#hiking",
+      "check": true
+    }]
+  },{
+    "title": "Fortaleza, Brazil",
+    "desc": "Formal - off season carnival is taking place in the last week of July",
+    "tags": [{
+      "name": "#festival",
+      "check": true
+    }]
+  }]
+}
