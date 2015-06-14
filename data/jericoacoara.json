@@ -16,11 +16,11 @@
   },{
    "name":"#surfing - see Dec-Apr"
   }],
-  "temp": "26",
-  "rain": "",
-  "wind": "",
+  "temp": "79",
+  "rain": "0.07",
+  "wind": "15",
   "climate": "Jericoacoara has tropical climate with rainy season in Jan-Jul and dry season in Jul-Dec",
-  "crowds": "July is High Season, expect it to be crowded. Additional Info: Avoid National holiday period between Dec-Feb with local tourists flocking to beach destinations.",
+  "crowds": "July is High Season, expect it to be crowded. Additionally: avoid National holiday period between Dec-Feb with local tourists flocking to beach destinations.",
   "others": [{
     "title": "Cumbuco, Brazil",
     "desc": "Cumbuco is a relaxed beach village popular with kite and windsurfers",
@@ -46,7 +46,7 @@
     }]
   },{
     "title": "Fortaleza, Brazil",
-    "desc": "Formal - off season carnival is taking place in the last week of July",
+    "desc": "Fortal - off season carnival is taking place in the last week of July",
     "tags": [{
       "name": "#festival",
       "check": true
