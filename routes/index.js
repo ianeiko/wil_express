@@ -28,13 +28,16 @@ var get_sms_id = function(req) {
 var handle_sms = function(sms_id) {
   client().messages(sms_id).get(function(err, message) {
     if(!msg || typeof(message) == 'undefined'){
+      send_message('No message found for the ID [' + sms_id + ']', '+17734502888');
       console.log('oopsie cakes, no message was found');
       return;
     }
 
+    send_message('Here is some sweet body text...... [' + message.body + ']', '+17734502888');
+
     var msg = message.body;
     if(is_greeting(msg)){
-      send_message('Hey! We’re here to help you figure out when to go. What do you wanna know?', message.to)
+      send_message('Hey! We’re here to help you figure out when to go. What do you wanna know?', message.from)
     } else {
       respondToQuestion(msg)
     }
