@@ -59,7 +59,7 @@ var fuzzy_match = function (str, pattern){
 };
 
 var respondToQuestion = function(question, destination) {
-  send_message("Sorry, I'm not smart enough to help you with that question yet.", destination);
+  send_message("So sorry, I'm not smart enough to help you with that question yet.", destination);
 };
 
 exports.ask = function(req, res) {
